@@ -1,5 +1,4 @@
-import { rpcHandler } from "@blitzjs/rpc"
-import { api } from "src/app/blitz-server"
+import { rpcAppHandler } from "@blitzjs/rpc"
+import { withBlitzAuth } from "src/app/blitz-server"
 
-export default api(rpcHandler({ onError: (error, ctx) => console.error(error) }))
-
+export const { GET, HEAD, POST } = withBlitzAuth(rpcAppHandler())
